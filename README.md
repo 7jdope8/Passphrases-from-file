@@ -1,5 +1,7 @@
 # brutecointxt
 
+Taken from here https://github.com/Th3NiKo/brutecointxt
+
 ## Table of contents
 * [Description](#description)
 * [Getting Started](#getting-started)
