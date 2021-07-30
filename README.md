@@ -1,54 +1,27 @@
-# brutecointxt
 
-Taken from here https://github.com/Th3NiKo/brutecointxt
+## Описание:
+Простой скрипт для перебора текстового файла с паролями и поиске адресов с положительным балансом. 
+Программа проверяет как сжатые, так и несжатые адреса с помощью [bit](https://github.com/ofek/bit) библиотеки. (нужен интернет)
+Удобно прогонять свежие базы паролей. В базе не должно быть каракулей, квадратиков и т.п. - выдаст ошибку.
 
-## Table of contents
-* [Description](#description)
-* [Getting Started](#getting-started)
-* [Usage](#usage)
-* [Output](#output)
 
-## Description
-Simple script to brute force text file filled with passphrases and print any keys with available balance. \
-Program check for both compressed and uncompressed versions of addresses using [bit](https://github.com/ofek/bit) library.
+### Быстрый старт
+Для использования скрипта вам понадобится Python3.x
 
-DISCLAIMER: Program created for educational purposes only. \
-Don't steal anybody bitcoins and don't use easy to guess passphrases.
-
-## Getting Started
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1J10ZQep7UX2BU3MnaWLJbwfe9nBuq9lP?usp=sharing)
-### Quick start
-You need python3.x in order to use script.
-
-Libraries used: [tqdm](https://github.com/tqdm/tqdm) and [bit](https://github.com/ofek/bit). You can install both using pip.
+Используемые библиотеки: [tqdm](https://github.com/tqdm/tqdm) и [bit](https://github.com/ofek/bit). Вы можете установить оба с помощью pip.
 
 ```
-pip install -r requirements.txt
+pip install tqdm
+pip install bit
 ```
 
-Check if script works and show help
+Проверить, работает ли скрипт, и показать справку
 ```
 python brutecointxt.py -h
 ```
 
-### Docker
-Simple dockerfile included.
 
-Example build (if u are inside script folder):
-```
-docker build -t brutecointxt .
-```
-
-then u can use it (as one time run on test.txt)
-```
-docker run --rm --name brutecointxt-running brutecointxt
-```
-or to use script from console
-```
-docker run -it --name brutecointxt-run brutecointxt /bin/bash  
-```
-
-## Usage
+## Параметры запуска:
 
 ```
 brutecointxt.py [-h] -t TEXT_FILE [-l] [-u] [-r] [-n]
@@ -63,25 +36,26 @@ brutecointxt.py [-h] -t TEXT_FILE [-l] [-u] [-r] [-n]
   -n, --no-uncomp       Do not check uncompressed version of addresses
 ```
 
-Example use:
+## Пример использования:
 ```
 python brutecointxt.py -t passphrases.txt > output.txt
 ```
-I recommend redirecting output to file as above to avoid loading bar misplacing. \
-Empty file simply means that no addresses with avaliable balance were found.
 
-If u want to check additionaly for **lowercase, uppercase and reversed** version of passphrases (it's going to be slower)
+Я рекомендую перенаправить вывод в файл, как указано выше, чтобы избежать потери полосы загрузки.
+Пустой файл просто означает, что адреса с доступным балансом не найдены.
+
+Если вы хотите дополнительно проверить строчные, прописные и обратные версии парольных фраз (это будет медленнее)
 ```
 python brutecointxt.py -l -u -r -t passphrases.txt > output.txt
 ```
 
-If u want to check **only compressed addresses** (it's going to be faster) 
+Если вы хотите проверять только сжатые адреса (это будет быстрее) 
 ```
 python brutecointxt.py -n passphrases.txt > output.txt
 ```
 
-## Output
-Example output for default options
+## Выход
+Пример вывода для параметров по умолчанию
 ```
 
 Passphrase:  bitcoin is awesome
@@ -100,7 +74,7 @@ Balance:  2.22
 
 ```
 
-Example output for -n option (without uncompressed)
+## Пример вывода для опции -n (только сжатый адрес)
 ```
 
 Passphrase:  bitcoin is awesome
@@ -117,3 +91,5 @@ Balance:  0.0
 
 
 ```
+## Donation
+- BTC: bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
