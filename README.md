@@ -54,8 +54,7 @@ python brutecointxt.py -l -u -r -t passphrases.txt > output.txt
 python brutecointxt.py -n passphrases.txt > output.txt
 ```
 
-## Выход
-Пример вывода для параметров по умолчанию
+## Пример вывода для параметров по умолчанию
 ```
 
 Passphrase:  bitcoin is awesome
